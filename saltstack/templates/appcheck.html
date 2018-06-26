@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block bodyContext %}
+    <br/>
+    <h1 class="text-center">checkAPP</h1>
+
+
+    <form class="form-horizontal" role="form" action="{% url 'checkapp' %}" method="POST">
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">ip列表</label>
+            <div class="col-lg-2 col-sm-2">
+                <select id="ipList" class="selectpicker show-tick form-control" multiple data-live-search="true"
+                        title="请选择IP" name="ip">
+                    <option>1.1.1.1</option>
+                    <option>2.2.2.2</option>
+                    <option>3.3.3.3</option>
+                    <option>4.4.4.4</option>
+                    <option>5.5.5.5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">实例名字：</label>
+            <div class="col-lg-2 col-sm-2">
+                <select id="appName" class="selectpicker show-tick form-control" multiple data-live-search="true"
+                        title="请选择实例名字" name="app">
+                    <option value="1">tomcat</option>
+                    <option value="2">nginx</option>
+                    <option value="3">keepalived</option>
+                    <option value="4">redis</option>
+                    <option value="5">zookeeper</option>
+                    <option value="6">mysql</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-group" id="tool">
+            <label for="inputEmail3" class="col-sm-2 control-label">检查工具：</label>
+            <div class="col-lg-7 col-sm-7">
+                <label class="radio-inline">
+                    <input type="radio" name="tool" value="1"> 连通性
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="tool" value="2"> 进程
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="tool" value="3"> 端口
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="tool" value="4"> 连接数
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary" id="installAppSubmit">检查</button>
+            </div>
+        </div>
+</form>
+{% endblock bodyContext %}
+
+
+{% block endscripts %}
+    <script src="{% static 'scripts/appcheck.js' %}"></script>
+{% endblock endscripts %}
